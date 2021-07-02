@@ -1,7 +1,9 @@
-#page-room {
+import styled from 'styled-components';
+
+export const PageRoom = styled.div`
   header {
     padding: 24px;
-    border-bottom: 1px solid #e2e2e2;
+    border-bottom: 1px solid ${props => props.theme.colors.primary};
 
     .content {
       max-width: 1120px;
@@ -9,6 +11,10 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
+
+      button {
+        color: ${props => props.theme.colors.text};
+      }
     
       > img {
         max-height: 45px;
@@ -37,12 +43,12 @@
       h1 {
         font-family: 'Poppins', sans-serif;
         font-size: 24px;
-        color: #29292e;
+        color: ${props => props.theme.colors.text};
       }
 
       span {
         margin-left: 16px;
-        background: #e559f9;
+        background: ${props => props.theme.colors.secundary};
         border-radius: 999px;
         padding: 8px 16px;
         font-weight: 800;
@@ -56,7 +62,7 @@
         border: 0;
         padding: 16px;
         border-radius: 8px;
-        background: #fefefe;
+        background: ${props => props.theme.colors.inputBackground};
         box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
         resize: vertical;
         min-height: 130px;
@@ -80,7 +86,7 @@
 
           span {
             margin-left: 8px;
-            color: #29292e;
+            color: ${props => props.theme.colors.text};
             font-weight: 500;
             font-size: 14px;
           }
@@ -94,7 +100,7 @@
           button {
             background: transparent;
             border: 0;
-            color: #835AFD;
+            color: ${props => props.theme.colors.text};
             text-decoration: underline;
             font-size: 14px;
             font-weight: 500;
@@ -104,5 +110,4 @@
       }
     }
   }
-
-}
+`;

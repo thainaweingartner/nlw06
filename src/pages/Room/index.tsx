@@ -1,19 +1,23 @@
+import { useContext } from "react";
 import { FormEvent, useState } from "react";
 import { useHistory, useParams } from "react-router-dom"
-import logoImg from '../assets/images/logo.svg';
+import logoImg from '../../assets/images/logo.svg';
+import logoDarkImg from '../../assets/images/logo-dark.svg';
 import { Button } from '../../components/Button';
 import { Question } from "../../components/Question";
 import { RoomCode } from '../../components/RoomCode';
+import { ThemeContext } from "../../contexts/ThemeContext";
 import { useAuth } from "../../hooks/useAuth";
 import { useRoom } from "../../hooks/useRoom";
 import { database } from "../../services/firebase";
-import '../styles/room.scss';
+import { PageRoom } from '../../styles/room';
 
 type RoomParams = {
   id: string;
 }
 
 export function Room() {
+  const { theme } = useContext(ThemeContext)
   const history = useHistory();
   const { user } = useAuth();
   const { id } = useParams<RoomParams>();
@@ -55,10 +59,10 @@ export function Room() {
   }
 
  return (
-   <div id="page-room">
+   <PageRoom>
      <header>
       <div className="content">
-        <img src={logoImg} alt="Letmeask" />
+        <img src={theme.title === 'light' ? logoImg : logoDarkImg} alt="Letmeask" />
         <RoomCode code={id}/>
       </div>
      </header>
@@ -115,6 +119,6 @@ export function Room() {
         )
       })}
      </main>
-   </div>
+   </PageRoom>
  )
 }

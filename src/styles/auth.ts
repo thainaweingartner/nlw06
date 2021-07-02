@@ -1,11 +1,13 @@
-#page-auth {
+import styled from 'styled-components';
+
+export const PageAuth = styled.div `
   display: flex;
   align-items: stretch;
   height: 100vh;
 
   aside {
     flex: 7;
-    background: #835afd;
+    background: ${props => props.theme.colors.primary};
     color: white;
     display: flex;
     flex-direction: column;
@@ -23,7 +25,7 @@
     }
 
     p {
-      color: #f8f8f8;
+      color: ${props => props.theme.colors.background};
       line-height: 32px;
       margin-top: 16px;
       font-size: 24px;
@@ -61,7 +63,7 @@
         height: 50px;
         border-radius: 8px;
         padding: 0 16px;
-        background: white;
+        background: ${props => props.theme.colors.inputBackground};
         border: 1px solid #a8a8b3;
       }
 
@@ -80,7 +82,7 @@
       margin-top: 14px;
 
       a {
-        color: #e559f9
+        color: ${props => props.theme.colors.secundary}
       }
     }
   }
@@ -131,4 +133,4 @@
       margin-left: 16px;
     }
   }
-}
+`;

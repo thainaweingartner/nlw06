@@ -1,5 +1,7 @@
-.question {
-  background: #fefefe;
+import styled from 'styled-components';
+
+export const QuestionBox = styled.div `
+  background: ${props => props.theme.colors.inputBackground};
   border-radius: 8px;
   box-shadow: 0 2px 12px rgba(0, 0, 0, 0.04);
   padding: 24px;
@@ -9,16 +11,16 @@
   }
 
   &.highlighted {
-    background: #f4f0ff;
-    border: 1px solid #835afd;
+    background: ${props => props.theme.title === 'light' ? '#FcedcF' : '#749FAA'};
+    border: 1px solid ${props => props.theme.colors.primary};
 
     footer .user-info span {
-      color: #29292e;
+      color: ${props => props.theme.colors.text};
     }
   }
   
   &.answered {
-    background: #cccccc;
+    background: ${props => props.theme.title === 'light' ? '#cccccc' : '#44484B'};
   }
 
   p {
@@ -66,10 +68,10 @@
         gap: 8px;
 
         &.liked {
-          color: #835afd;
+          color: ${props => props.theme.colors.primary};
 
           svg path {
-            stroke: #835afd;
+            stroke: ${props => props.theme.colors.primary};
           }
         }
       }
@@ -79,4 +81,4 @@
       }
     }
   }
-}
+`;

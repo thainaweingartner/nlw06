@@ -1,13 +1,16 @@
-import { useState, FormEvent } from 'react';
+import { useState, FormEvent, useContext } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import illustrationImg from '../assets/images/illustration.svg';
-import logoImg from '../assets/images/logo.svg';
+import illustrationImg from '../../assets/images/illustration.svg';
+import logoImg from '../../assets/images/logo.svg';
+import logoDarkImg from '../../assets/images/logo-dark.svg';
 import { Button } from '../../components/Button';
 import { useAuth } from '../../hooks/useAuth';
 import { database } from '../../services/firebase';
-import '../styles/room.scss';
+import { PageAuth } from '../../styles/auth';
+import { ThemeContext } from '../../contexts/ThemeContext';
 
 export function NewRoom() {
+  const { theme } = useContext(ThemeContext)
   const { user } = useAuth();
   const history = useHistory();
   const [newRoom, setNewRoom] = useState('');
@@ -25,11 +28,11 @@ export function NewRoom() {
       authorId: user?.id,
     });
 
-    history.push(`/admin/room/${firebaseRoom.key}`)
+    history.push(`/admin/rooms/${firebaseRoom.key}`)
   }
 
   return (
-    <div id="page-auth">
+    <PageAuth>
       <aside>
           <img src={illustrationImg} alt="Ilustração simbolizando perguntas e respostas" />
           <strong>Crie salas Q&amp;A ao-vivo</strong>
@@ -37,7 +40,7 @@ export function NewRoom() {
       </aside>
       <main>
         <div className="main-content">
-          <img src={logoImg} alt="Letmeask" />
+          <img src={theme.title === 'light' ? logoImg : logoDarkImg} alt="Letmeask" />
           <h1>{user?.name}</h1>
           <h2>Criar uma nova sala</h2>
           <div className="separetor">ou entre em uma sala</div>
@@ -54,6 +57,6 @@ export function NewRoom() {
           <p>Quer entrar em uma sala existente? <Link to="/">clique aqui</Link></p>
         </div>
       </main>
-    </div>
+    </PageAuth>
   )
 }
