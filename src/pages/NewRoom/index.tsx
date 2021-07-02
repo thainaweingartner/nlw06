@@ -2,10 +2,10 @@ import { useState, FormEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import illustrationImg from '../assets/images/illustration.svg';
 import logoImg from '../assets/images/logo.svg';
-import '../styles/auth.scss';
-import { Button } from '../components/Button';
-import { useAuth } from '../hooks/useAuth';
-import { database } from '../services/firebase';
+import { Button } from '../../components/Button';
+import { useAuth } from '../../hooks/useAuth';
+import { database } from '../../services/firebase';
+import '../styles/room.scss';
 
 export function NewRoom() {
   const { user } = useAuth();
@@ -25,7 +25,7 @@ export function NewRoom() {
       authorId: user?.id,
     });
 
-    history.push(`/room/${firebaseRoom.key}`)
+    history.push(`/admin/room/${firebaseRoom.key}`)
   }
 
   return (
