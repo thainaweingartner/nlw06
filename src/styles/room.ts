@@ -48,7 +48,7 @@ export const PageRoom = styled.div`
 
       span {
         margin-left: 16px;
-        background: ${props => props.theme.colors.secundary};
+        background: ${props => props.theme.colors.primary};
         border-radius: 999px;
         padding: 8px 16px;
         font-weight: 800;
